@@ -228,6 +228,116 @@
     .particle:nth-child(4) { width: 5px; height: 5px; left: 70%; animation-delay: 1s; }
     .particle:nth-child(5) { width: 7px; height: 7px; left: 80%; animation-delay: 3s; }
     
+    /* Botones flotantes */
+    .floating-buttons {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      opacity: 0;
+      transform: translateX(100px);
+      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+    
+    .floating-buttons.visible {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+    
+    .floating-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .floating-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: inherit;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: transform 0.3s ease;
+    }
+    
+    .floating-btn:hover::before {
+      transform: scale(1.2);
+    }
+    
+    .floating-btn:hover {
+      transform: translateY(-5px) scale(1.1);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+      color: white;
+    }
+    
+    .floating-btn.whatsapp {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+    }
+    
+    .floating-btn.whatsapp:hover {
+      box-shadow: 0 15px 35px rgba(37, 211, 102, 0.4);
+    }
+    
+    .floating-btn.website {
+      background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover));
+    }
+    
+    .floating-btn.website:hover {
+      box-shadow: 0 15px 35px rgba(212, 175, 55, 0.4);
+    }
+    
+    /* Tooltip para botones flotantes */
+    .floating-btn .tooltip-text {
+      position: absolute;
+      right: 70px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+    
+    .floating-btn .tooltip-text::after {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: rgba(0, 0, 0, 0.8);
+    }
+    
+    .floating-btn:hover .tooltip-text {
+      opacity: 1;
+      transform: translateY(-50%) translateX(-5px);
+    }
+    
     /* Secciones con diseño moderno */
     section {
       padding: 7rem 0;
@@ -633,6 +743,17 @@
       .section-title {
         font-size: 2.5rem;
       }
+      
+      .floating-buttons {
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .floating-btn {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+      }
     }
     
     @media (max-width: 768px) {
@@ -686,6 +807,21 @@
         font-size: 1.1rem;
         padding: 2rem;
       }
+      
+      .floating-buttons {
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .floating-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
+      
+      .floating-btn .tooltip-text {
+        display: none;
+      }
     }
     
     @media (max-width: 576px) {
@@ -722,6 +858,18 @@
       .section-title {
         font-size: 1.8rem;
         margin-bottom: 3rem;
+      }
+      
+      .floating-buttons {
+        bottom: 10px;
+        right: 10px;
+        gap: 10px;
+      }
+      
+      .floating-btn {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
       }
     }
     
@@ -810,6 +958,18 @@
       <i class="bi bi-chevron-down fs-4"></i>
     </div>
   </section>
+
+  <!-- Botones flotantes -->
+  <div class="floating-buttons" id="floatingButtons">
+    <a href="https://khaki-wasp-906179.hostingersite.com/" class="floating-btn website" target="_blank">
+      <i class="bi bi-globe"></i>
+      <span class="tooltip-text">Visita Nuestro Sitio Web</span>
+    </a>
+    <a href="https://wa.me/524491543138?text=Hola,%20quiero%20pedir%20informes%20sobre%20sus%20servicios." class="floating-btn whatsapp" target="_blank">
+      <i class="bi bi-whatsapp"></i>
+      <span class="tooltip-text">Contáctanos por WhatsApp</span>
+    </a>
+  </div>
   
   <!-- Servicios -->
   <section id="services" class="services">
@@ -944,7 +1104,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12 text-center">
-          <p>&copy; 2024 Reminiscencia Photography. Todos los derechos reservados.</p>
+          <p>&copy; 2025 Reminiscencia Photography. Todos los derechos reservados.</p>
           <div class="social-links mt-3">
             <a href="https://www.facebook.com/presenda.ph" class="text-white"><i class="bi bi-facebook"></i></a>
             <a href="https://www.instagram.com/reminiscencias.photography/" class="text-white"><i class="bi bi-instagram"></i></a>
@@ -967,6 +1127,21 @@
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Funcionalidad de botones flotantes
+    window.addEventListener('scroll', function() {
+      const floatingButtons = document.getElementById('floatingButtons');
+      const heroSection = document.getElementById('home');
+      const heroHeight = heroSection.offsetHeight;
+      const scrollPosition = window.pageYOffset;
+
+      // Mostrar botones cuando el usuario haya pasado el 80% del hero
+      if (scrollPosition > heroHeight * 0.8) {
+        floatingButtons.classList.add('visible');
+      } else {
+        floatingButtons.classList.remove('visible');
       }
     });
     
@@ -1043,6 +1218,14 @@
           typeWriter(heroTitle, originalText, 80);
         }
       }, 500);
+    });
+
+    // Animación de entrada para los botones flotantes
+    window.addEventListener('load', function() {
+      const floatingButtons = document.querySelectorAll('.floating-btn');
+      floatingButtons.forEach((btn, index) => {
+        btn.style.animationDelay = `${index * 0.2}s`;
+      });
     });
   </script>
 </body>
