@@ -58,17 +58,17 @@
     
     .navbar {
       padding: 20px 0;
-      background: rgba(10, 10, 10, 0.8) !important;
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border-light);
+      background: transparent !important;
+      backdrop-filter: none;
+      border-bottom: none;
       transition: all 0.4s ease;
     }
     
     .navbar.scrolled {
       padding: 12px 0;
-      background: rgba(10, 10, 10, 0.95) !important;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-      backdrop-filter: blur(30px);
+      background: transparent !important;
+      box-shadow: none;
+      backdrop-filter: none;
     }
     
     .navbar-brand {
@@ -653,6 +653,12 @@
         font-size: 1rem;
       }
       
+      .hero-logo {
+        font-size: 1.5rem;
+        top: 30px;
+        left: 30px;
+      }
+      
       .service-card {
         margin-bottom: 2rem;
       }
@@ -691,6 +697,12 @@
         font-size: 2rem;
       }
       
+      .hero-logo {
+        font-size: 1.2rem;
+        top: 20px;
+        left: 20px;
+      }
+      
       .carousel-inner img {
         height: 280px;
       }
@@ -710,6 +722,40 @@
       .section-title {
         font-size: 1.8rem;
         margin-bottom: 3rem;
+      }
+    }
+    
+    /* Logo en el hero */
+    .hero-logo {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      z-index: 10;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fff 0%, var(--accent-gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      animation: logoFadeIn 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .hero-logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 10px 20px rgba(212, 175, 55, 0.3));
+    }
+    
+    @keyframes logoFadeIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
       }
     }
     
@@ -740,7 +786,7 @@
 <body>
 
   <section id="home" class="hero">
-    <div><a class="navbar-brand">Reminiscencia Photography</a></div>
+    <div class="hero-logo">Reminiscencia Photography</div>
     <div class="particles">
       <div class="particle"></div>
       <div class="particle"></div>
