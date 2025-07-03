@@ -55,6 +55,22 @@
       z-index: 1000;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
+
+    .hero-logo {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      z-index: 10;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+      background: linear-gradient(135deg, #fff, var(--accent-gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     
     .navbar {
       padding: 20px 0;
@@ -740,6 +756,7 @@
 <body>
 
   <section id="home" class="hero">
+    <div class="hero-logo">Reminiscencia Photography</div>
     <div class="particles">
       <div class="particle"></div>
       <div class="particle"></div>
